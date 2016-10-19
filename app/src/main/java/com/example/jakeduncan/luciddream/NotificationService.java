@@ -1,15 +1,18 @@
 package com.example.jakeduncan.luciddream;
 
+import android.app.AlarmManager;
 import android.app.IntentService;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Random;
-
-import static java.lang.Thread.sleep;
 
 /**
  * Created by jakeduncan on 10/18/16.
@@ -29,6 +32,7 @@ public class NotificationService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         Log.d(TAG, "onHandleIntent: getting in");
+        Calendar cal = Calendar.getInstance();
 
         reminderList = new ArrayList();
         reminderList.add("Flick a Light Switch");
@@ -52,21 +56,21 @@ public class NotificationService extends IntentService {
         int mNotificationId = 001;
         mNotifyMgr.notify(mNotificationId, mBuilder.build());
 
-        Log.d(TAG, "onHandleIntent: getting out");
-        try {
-            sleep(5000);
-            startService(intent);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                Intent intent = new Intent(Runnable(), NotificationService.class);
-//                startService(intent);
-//            }
-//        }, 2000);
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(300);
+
+            AlarmManager alarm = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+            PendingIntent pintent = PendingIntent.getService(getApplicationContext(), 0, intent, 0);
+            alarm.cancel(pintent);
+            alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_FIFTEEN_MINUTES, pintent);
+            //AlarmManager.INTERVAL_HOUR
+
+        // try {
+        //    sleep(5000);
+         //   startService(intent);
+     //   } catch (InterruptedException e) {
+      //      e.printStackTrace();
+      //  }
     }
 
 }
