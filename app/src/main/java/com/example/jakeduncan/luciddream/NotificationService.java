@@ -43,20 +43,12 @@ public class NotificationService extends IntentService {
 
         AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         PendingIntent pintent = PendingIntent.getService(getApplicationContext(), 0, intent, 0);
-        alarm.cancel(pintent);
-//        alarm.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()
-//        + 60*1000, 60000 * 60 ,pintent);   WORKING BUT SET TO 1 MIN
-        alarm.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()
-       + 60000 * 60, pintent);      //WORKING
 
-//        try {   WORKING
-//
-//            Random random = new Random();
-//            sleep(60000 * (random.nextInt(75) + 25));
-//            startService(intent);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        alarm.cancel(pintent);
+
+        alarm.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()
+       + 60000 * 60, pintent);
+
     }
 
     public void makeNotification() {
