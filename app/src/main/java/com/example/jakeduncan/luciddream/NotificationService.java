@@ -20,9 +20,9 @@ import java.util.Random;
 
 public class NotificationService extends IntentService {
 
-    private static String TAG = "Inchoo.net tutorial";
-
-    private ArrayList<String> reminderList;
+    private static ArrayList<String> reminderList;
+    private static AlarmManager alarm;
+    private static PendingIntent pintent;
 
     public NotificationService() {
         super("Service");
@@ -36,18 +36,20 @@ public class NotificationService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Log.d(TAG, "onHandleIntent: getting in");
-
+        pintent = PendingIntent.getService(getApplicationContext(), 0, intent, 0);
+        if (!intent.getBooleanExtra(MainActivity.NOTIFICATIONS_ON, true)) {
+            alarm.cancel(pintent);
+            return;
+        }
 
         makeNotification();
 
-        AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        PendingIntent pintent = PendingIntent.getService(getApplicationContext(), 0, intent, 0);
+        alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         alarm.cancel(pintent);
 
         alarm.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()
-       + 60000 * 60, pintent);
+       + 5000, pintent);
 
     }
 
@@ -56,7 +58,7 @@ public class NotificationService extends IntentService {
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.ic_visibility_white_mdpi_24dp)
+                        .setSmallIcon(R.drawable.ic_stat_name)
                         .setContentTitle("Am I Awake?")
                         .setContentText(reminderList.get(random.nextInt(3)));
 

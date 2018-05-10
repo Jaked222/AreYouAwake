@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">Lucid Dream</string>
+    <string name="app_name">Become Lucid</string>
     <string name="lucid">This is a very simple app designed to help you lucid dream. All you need to do to use it is start the app and then let it run in the background.
-        You can continue to use your phone as normal, or just keep it in your pocket. At random intervals, a reminder will pop up telling you
-        to follow on of the instructions: \n \n “Hop” means to literally hop. Gravity in dreams usually works differently. \n\n
+        You can continue to use your phone as normal, or just keep it in your pocket. At some interval (configurable in the settings), a reminder will pop up telling you
+        to follow one of the following instructions: \n \n “Hop” means to literally hop. Gravity in dreams usually works differently. \n\n
         “Check a clock” When you see this, look at a clock. Look away, then look at it again. In a dream, clocks never stay at the same time. \n\n
-        \"Look at you hand” Your mind can\'t properly create the back of your hand in a dream. It will look very distorted if its a dream.
+        \"Look at you hand” Your mind can\'t properly create the back of your hand in a dream. It will look very distorted if you're in a dream.
         You\'ll know. \n\n \"Flick a light switch\" Light switches don’t work in dreams.\n\n \n The purpose of doing these things is to set a habit
         of checking whether or not you\'re sleeping. Eventually you\'ll do this in a dream, and it will spark you to become conscious. At this point,
         you\'re lucid.</string>

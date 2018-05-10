@@ -5,7 +5,8 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jakeduncan.luciddream.MainActivity">
+    tools:context="com.example.jakeduncan.luciddream.MainActivity"
+    android:background="#282828">
 
     <TextView
         android:text="Are you awake right now?"
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/titleView"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="parent"
@@ -37,6 +38,22 @@
         android:layout_marginBottom="195dp"
         app:layout_constraintLeft_toLeftOf="parent"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@android:color/holo_blue_dark" />
+        android:background="#606060" />
+
+    <ToggleButton
+        android:id="@+id/toggleNotifications"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="124dp"
+        android:background="#606060"
+        android:textOn="Turn notifications off"
+        android:textOff="Turn notifications on"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
 </android.support.constraint.ConstraintLayout>
