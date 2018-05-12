@@ -31,6 +31,8 @@ public class NotificationService extends IntentService {
         reminderList.add("Hop");
         reminderList.add("Check a clock");
         reminderList.add("Look at the back of your hand");
+        reminderList.add("Push through your hand");
+        reminderList.add("Am I Awake?");
     }
 
 
@@ -60,7 +62,7 @@ public class NotificationService extends IntentService {
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_stat_name)
                         .setContentTitle("Am I Awake?")
-                        .setContentText(reminderList.get(random.nextInt(3)));
+                        .setContentText(reminderList.get(random.nextInt(5)));
 
         NotificationManager mNotifyMgr =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
