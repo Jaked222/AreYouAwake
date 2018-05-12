@@ -49,7 +49,7 @@ public class NotificationService extends IntentService {
         alarm.cancel(pintent);
 
         alarm.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()
-       + 5000, pintent);
+       + 60000 * SettingsActivity.getInterval(), pintent);
 
     }
 

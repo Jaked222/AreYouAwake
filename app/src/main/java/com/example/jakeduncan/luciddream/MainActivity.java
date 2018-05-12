@@ -24,10 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        Intent notificationIntent = new Intent(this, NotificationService.class);
-        startService(notificationIntent);
-
         instructionsButton = (Button) findViewById(R.id.instructions);
         instructionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
                 toggleNotifications(notificationsOn);
             }
         });
+
+        if (notificationsOn) {
+            Intent notificationIntent = new Intent(this, NotificationService.class);
+            startService(notificationIntent);
+        }
     }
 
     @Override
